@@ -4,6 +4,7 @@ var router = express.Router();
 // Controller Modules
 const app_controller = require('../controllers/appController');
 const event_controller = require('../controllers/eventController');
+const album_controller = require('../controllers/albumController');
 const photo_controller = require('../controllers/photoController');
 
 // GET Home Page
@@ -37,29 +38,46 @@ router.get('/calender', event_controller.calender);
 
 // PHOTO GALLERY ROUTES //
 
-// Get create photo
-router.get('/photos/create', photo_controller.photos_create_get);
+// Get create Album
+router.get('/album/create', album_controller.album_create_get);
 
-// POST create photo
-router.post('/photos/create', photo_controller.photos_create_post);
+// POST create Album
+router.post('/album/create', album_controller.album_create_post);
 
-// Get delete photo
-router.get('/photos/:id/delete', photo_controller.photos_delete_get);
+// Get delete Album
+router.get('/album/:id/delete', album_controller.album_delete_get);
 
-// POST delete photo
-router.post('/photos/:id/delete', photo_controller.photos_delete_post);
+// POST delete Album
+router.post('/album/:id/delete', album_controller.album_delete_post);
 
-// Get update Photo
-router.get('/photos/:id/update', photo_controller.photos_update_get);
+// Get update Album
+router.get('/album/:id/update', album_controller.album_update_get);
 
-// POST update Photo
-router.post('/photos/:id/update', photo_controller.photos_update_post);
+// POST update Album
+router.post('/album/:id/update', album_controller.album_update_post);
 
-// Get Photo detail
-router.get('/photos/:id', photo_controller.photos_detail);
+// Get Album detail
+router.get('/album/:id', album_controller.album_detail);
 
-// Get list of photos
-router.get('/photogallery', photo_controller.photo_gallery);
+// Get list of Album
+router.get('/photogallery', album_controller.photo_gallery);
+
+// PHOTO ROUTES
+
+// Get create Photo
+router.get('/photo/create', photo_controller.photo_create_get);
+
+// POST create Photo
+router.post('/photo/create', photo_controller.photo_create_post);
+
+// Get Delete Photo
+router.get('/photo/:id/delete', photo_controller.photo_delete_get);
+
+// POST Delete Photo
+router.post('/photo/:id/delete', photo_controller.photo_delete_post);
+
+// Get Photo Detail
+router.get('/photo/:id', photo_controller.photo_detail);
 
 // OTHER ROUTES //
 
