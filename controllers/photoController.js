@@ -1,41 +1,26 @@
-const Photos = require('../models/photos');
-
-// Gallery of Photos
-exports.photo_gallery = (req, res) => {
-    res.send('NOT IMPLEMENTED: Photo Gallery');
-};
+const photo = require('../models/photos');
 
 // Display detail page of specific Photo
-exports.photos_detail = (req, res) => {
-    res.send(`NOT IMPLEMENTED: Photos detail: ${req.params.id}`);
+exports.photo_detail = (req, res) => {
+    res.send(`NOT IMPLEMENTED: photo detail: ${req.params.id}`);
 };
 
 // Display Photo Create Form - GET
-exports.photos_create_get = (req, res) => {
-    res.send(`NOT IMPLEMENTED: Photos create GET`);
+exports.photo_create_get = (req, res) => {
+    res.send(`NOT IMPLEMENTED: photo create GET`);
 };
 
 // Handle Photo Create - POST
-exports.photos_create_post = (req, res) => {
-    res.send(`NOT IMPLEMENTED: Photos create POST`);
+exports.photo_create_post = (req, res) => {
+    res.send(`NOT IMPLEMENTED: photo create POST`);
 };
 
 // Display Photo Delete - GET
-exports.photos_delete_get = (req, res) => {
-    res.send('NOT IMPLEMENTED: Photos delete GET');
+exports.photo_delete_get = (req, res) => {
+    res.send('NOT IMPLEMENTED: photo delete GET');
 };
 
 // Handle Photo Delete - POST
-exports.photos_delete_post = (req, res) => {
-    res.send('NOT IMPLEMENTED: Photos delete POST');
-};
-
-// Display Photo Update - GET
-exports.photos_update_get = (req, res) => {
-    res.send('NOT IMPLEMENTED: Photos update GET');
-};
-
-// Handle Photo Update - POST
-exports.photos_update_post = (req, res) => {
-    res.send('NOT IMPLEMENTED: Photos update POST');
+exports.photo_delete_post = (req, res) => {
+    res.send('NOT IMPLEMENTED: photo delete POST');
 };
