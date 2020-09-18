@@ -5,17 +5,17 @@ exports.index = (req, res) => {
 
 // About Page
 exports.about = (req, res) => {
-    res.send('NOT IMPLEMENTED: About Page');
+    res.render('about', { title: 'About Page' });
 };
 
 // Club News
 exports.clubNews = (req, res) => {
-    res.send('NOT IMPLEMENTED: Club News');
+    res.render('clubnews', { title: 'Club News' });
 }
 
 // Contact
 exports.contact = (req, res) => {
-    res.send('NOT IMPLEMENTED: Contact');
+    res.render('contact', { title: 'Contact' });
 }
 
 
