@@ -85,7 +85,7 @@ router.get('/photo/:id', photo_controller.photo_detail);
 router.get('/about', app_controller.about);
 
 // Club News
-router.get('/club-news', app_controller.clubNews);
+router.get('/clubnews', app_controller.clubNews);
 
 // Contact
 router.get('/contact', app_controller.contact);
