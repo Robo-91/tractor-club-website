@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1= title
+
+  form(method='POST' action='' enctype='multipart/form-data')
+    div.form-group
+      label(for="description") Event Description
+      input(type="text" name='description' id='description' placeholder='description' required='true')
+      label(for="address") Address
+      input(type="text" name='address' id='address' placeholder='address' required='true')
+      label(for="meeting-date") Date of Meeting
+      input(type="date" name='meeting-date' id='meeting-date' placeholder='meeting date' required='true')
+      label(for="start-time") Start Time
+      input(type="time" name='start-time' id='start-time' placeholder='start time' required='true')
+      label(for="end-time") Ending Time
+      input(type="time" name='end-time' id='end-time' placeholder='end time' required='true')
+    input(class='submit' type='submit')
+
+    if errors
+      ul
+        for error in errors
+          li!= error.msg
