@@ -1,4 +1,5 @@
 const Event = require('../models/events');
+const { body } = require('express-validator');
 
 // Calender Page - Event List
 exports.calender = (req, res) => {
@@ -12,7 +13,7 @@ exports.event_detail = (req, res) => {
 
 // Display Event Create Form - GET
 exports.event_create_get = (req, res) => {
-    res.send(`NOT IMPLEMENTED: Event create GET`);
+    res.render('event_form', { title: 'New Event' });
 };
 
 // Handle Event Create - POST
