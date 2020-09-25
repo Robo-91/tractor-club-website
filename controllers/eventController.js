@@ -3,7 +3,7 @@ const { body } = require('express-validator');
 
 // Calender Page - Event List
 exports.calender = (req, res) => {
-    res.send('NOT IMPLEMENTED: Calender');
+    res.render('calender', { title: 'Calender Page' });
 };
 
 // Display detail page of specific event
