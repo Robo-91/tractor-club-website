@@ -1,4 +1,4 @@
-const photo = require('../models/photos');
+const Photo = require('../models/photos');
 
 // Display detail page of specific Photo
 exports.photo_detail = (req, res) => {

@@ -1,4 +1,4 @@
-const album = require('../models/album');
+const Album = require('../models/album');
 
 // Gallery of Photos
 exports.photo_gallery = (req, res) => {
