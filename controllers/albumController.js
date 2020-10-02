@@ -1,8 +1,12 @@
 const Album = require('../models/album');
 
 // Gallery of Photos
-exports.photo_gallery = (req, res) => {
-    res.send('NOT IMPLEMENTED: Photo Gallery');
+exports.photo_gallery = (req, res, next) => {
+    Album.find()
+        .exec(function(err, list_album) {
+            if(err) { return next(err); }
+            res.render('album_list', { title: 'Photo Gallery', list_album: list_album });
+        });
 };
 
 // Display detail page of specific Album
