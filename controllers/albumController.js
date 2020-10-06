@@ -72,14 +72,12 @@ exports.album_create_post = [
     body('date_submitted').notEmpty(),
     // Process
     (req, res, next) => {
-        const files = req.files;
-        console.log(typeof files);
         const errors = validationResult(req);
         // create new album obj
         const album = new Album({
             event_name: req.body.event_name,
             date_submitted: req.body.date_submitted,
-            photo: { data: fs.readFileSync(files.path), contentType: files.mimetype }
+            photo: { data: req.files.map(req.files.path), contentType: req.files.mimetype }
         });
         if(!errors.isEmpty()) {
             // There are errors
@@ -93,7 +91,7 @@ exports.album_create_post = [
                         res.redirect(found_album.url);
                     }
                     else {
-                        Album.save(function(err) {
+                        album.save(function(err) {
                             if (err) { return next(err); }
                             res.redirect(album.url);
                         });
