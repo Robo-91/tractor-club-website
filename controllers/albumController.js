@@ -66,7 +66,6 @@ exports.album_create_get = (req, res, next) => {
 
 // Handle Album Create - POST
 exports.album_create_post = [
-    upload.array('photo'), // This is the same as the name attribute for file
     // Validate Fields
     body('event_name').notEmpty().trim().escape().isLength({ min: 2 }),
     body('date_submitted').notEmpty(),
@@ -76,8 +75,7 @@ exports.album_create_post = [
         // create new album obj
         const album = new Album({
             event_name: req.body.event_name,
-            date_submitted: req.body.date_submitted,
-            photo: { data: req.files.map(req.files.path), contentType: req.files.mimetype }
+            date_submitted: req.body.date_submitted
         });
         if(!errors.isEmpty()) {
             // There are errors

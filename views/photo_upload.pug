@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1= title
+
+  form(method='POST' action='' enctype='multipart/form-data')
+    .div.form-group
+      label(for='photo') Photos
+      input(type="file" class='userinput' id='photo' name='photo' required='true')
+    input(class='submit' type='submit')
