@@ -1,4 +1,5 @@
 const Photo = require('../models/photos');
+const Album = require('../models/album');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
@@ -40,32 +41,50 @@ exports.photo_detail = (req, res) => {
 };
 
 // Display Photo Create Form - GET
-exports.photo_create_get = (req, res, next) => {
+exports.photo_create_get = async (req, res, next) => {
+    try {
+        const albums = await Album.find();
+        res.render('photo_upload', { title: 'Add New Photo', albums: albums });
+    } catch (err) {
+        console.log(err);
+        res.redirect('/');
+    }
     
-    res.render('photo_upload', { title: 'Add New Photo' })
 };
 
 // Handle Photo Create - POST
 exports.photo_create_post = [
     upload.single('photo'),
-    (req, res, next) => {
-        console.log(req.file);
+    async (req, res, next) => {
         const photo = new Photo({
+            album: req.body.album,
             img: { data: fs.readFileSync(req.file.path), contentType: req.file.mimetype }
         });
-        photo.save(function(err) {
-            if (err) { return next(err); }
+        try {
+            const newPhoto = await photo.save();
             res.redirect(photo.url);
-        });
+        } catch (err) {
+            return next(err);
+        }
     }
 ];
 
 // Display Photo Delete - GET
-exports.photo_delete_get = (req, res) => {
-    res.send('NOT IMPLEMENTED: photo delete GET');
+exports.photo_delete_get = (req, res, next) => {
+    Photo.findById(req.params.id)
+        .exec(function(err, photo) {
+            if (err) { return next(err); }
+            if (photo === null) {
+                res.redirect('/photogallery');
+            }
+            res.render('photo_delete', { title: 'Delete Photo', photo: photo })
+        })
 };
 
 // Handle Photo Delete - POST
-exports.photo_delete_post = (req, res) => {
-    res.send('NOT IMPLEMENTED: photo delete POST');
+exports.photo_delete_post = (req, res, next) => {
+    Photo.findByIdAndRemove(req.body.id, function deletePhoto(err) {
+        if (err) { return next(err); }
+        res.redirect('/photogallery');
+    })
 };
