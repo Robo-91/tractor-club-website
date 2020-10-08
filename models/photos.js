@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const PhotoSchema = new Schema(
     {
+        album: { type: Schema.Types.ObjectId, ref: 'Album', required: true },
         img: { data: Buffer, contentType: String }
     }
 );
