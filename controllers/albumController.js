@@ -1,4 +1,5 @@
 const Album = require('../models/album');
+const Photo = require('../models/photos');
 const { body, validationResult } = require('express-validator');
 const multer = require('multer');
 const path = require('path');
@@ -45,37 +46,50 @@ exports.photo_gallery = (req, res, next) => {
 };
 
 // Display detail page of specific Album
-exports.album_detail = (req, res, next) => {
-    Album.findById(req.params.id)
-        .exec(function(err, album) {
-            if (err) { return next(err); }
-            if (album === null) {
-                const err = new Error('Album not found');
-                err.status = 404;
-                return next(err);
-            }
-            // Successful
-            res.render('album_detail', { title: 'Photo Album', album: album });
+exports.album_detail = async (req, res, next) => {
+    try {
+        console.log(req.params.id);
+        const findAlbum = await Album.findById(req.params.id);
+        const photos = await Photo.find().populate({ path: 'album' });
+        const albumPhotos = await photos.filter(function(photo) {
+            return photo.album._id.toString() === req.params.id;
         });
+        console.log(albumPhotos);
+        res.render('album_detail',{ title: 'Photo Album', album: findAlbum, photos: albumPhotos });
+    } catch (err) {
+        return next(err);
+    }
+    // Album.findById(req.params.id)
+    //     .populate('photos')
+    //     .exec(function(err, album) {
+    //         if (err) { return next(err); }
+    //         if (album === null) {
+    //             const err = new Error('Album not found');
+    //             err.status = 404;
+    //             return next(err);
+    //         }
+    //         // Successful
+    //         res.render('album_detail', { title: 'Photo Album', album: album });
+    //     });
 };
 
 // Display Album Create Form - GET
 exports.album_create_get = (req, res, next) => {
-    res.render('album_form', { title: 'Create New Album' });
+        res.render('album_form', { title: 'Create New Album' });
 };
 
 // Handle Album Create - POST
 exports.album_create_post = [
     // Validate Fields
-    body('event_name').notEmpty().trim().escape().isLength({ min: 2 }),
-    body('date_submitted').notEmpty(),
+    body('event_name').trim().escape(),
+    body('date_submitted').trim().escape(),
     // Process
     (req, res, next) => {
         const errors = validationResult(req);
         // create new album obj
         const album = new Album({
             event_name: req.body.event_name,
-            date_submitted: req.body.date_submitted
+            date_submitted: req.body.date_submitted,
         });
         if(!errors.isEmpty()) {
             // There are errors

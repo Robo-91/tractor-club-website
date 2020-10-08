@@ -62,7 +62,7 @@ exports.photo_create_post = [
         });
         try {
             const newPhoto = await photo.save();
-            res.redirect(photo.url);
+            res.redirect(newPhoto.url);
         } catch (err) {
             return next(err);
         }
