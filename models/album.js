@@ -5,8 +5,7 @@ const moment = require('moment');
 const AlbumSchema = new Schema(
     {
         event_name: { type: String, required: true },
-        date_submitted: { type: Date, required: true },
-        photos: {type: Schema.Types.ObjectId, ref: 'Photo', required: true}
+        date_submitted: { type: Date, required: true }
     }
 );
 
