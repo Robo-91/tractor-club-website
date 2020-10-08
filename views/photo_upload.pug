@@ -5,6 +5,10 @@ block content
 
   form(method='POST' action='' enctype='multipart/form-data')
     .div.form-group
+      label Albums
+      select(name='album' required='true' placeholder='Select Album')
+        for album in albums
+          option(label=`${album.event_name}` value=`${album._id}`)
       label(for='photo') Photos
       input(type="file" class='userinput' id='photo' name='photo' required='true')
     input(class='submit' type='submit')

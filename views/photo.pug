@@ -3,3 +3,11 @@ extends layout
 block content
   h1 Photo
 
+  if photo.img && photo.img.data
+    img(src=`data:image/$${photo.img.contentType};base64, ${photo.img.data.toString('base64')}` width='500' height='500')
+  else
+    div No Image Available
+  
+      
+
+  a(class='delete-photo' href=`${photo.url}/delete`) Delete Photo
