@@ -3,14 +3,12 @@ extends layout
 block content
   h1= title
 
-  form(method='POST' action='' enctype='multipart/form-data')
+  form(method='POST' action='')
     .div.form-group
       label(for='event_name') Event Name
-      input(type="text" class='userinput' id='event_name' name='event_name' value=(undefined===album ? '' : album.event_name), required='true')
+      input(type="text" class='userinput' id='event_name' name='event_name' value=(undefined===album ? '' : album.event_name) required='true')
       label(for='date_submitted') Event Date
-      input(type="date" class='userinput' id='date_submitted' name='date_submitted' value=(undefined===album ? '' : album.date_submitted), required='true')
-      label(for='photo') Photos
-      input(type="file" class='userinput' id='photo' name='photo' value=(undefined===album ? '' : album.photo), required='true' multiple)
+      input(type="date" class='userinput' id='date_submitted' name='date_submitted' value=(undefined===album ? '' : album.date_submitted) required='true')
     input(class='submit' type='submit')
 
     if errors
