@@ -1,7 +1,7 @@
 const Event = require('../models/events');
 const { body, validationResult } = require('express-validator');
 const { NotExtended } = require('http-errors');
-const { isDate } = require('moment');
+// const { isDate } = require('moment');
 
 // Calender Page - Event List
 exports.calender = (req, res) => {
@@ -19,7 +19,7 @@ exports.event_detail = (req, res, next) => {
                 return next(err);
             }
             // Successful, render
-            res.redirect('event_detail', { title: 'Event Details', event: event });
+            res.render('event_detail', { title: 'Event Details', event: event });
         })
 };
 
@@ -31,11 +31,11 @@ exports.event_create_get = (req, res, next) => {
 // Handle Event Create - POST
 exports.event_create_post = [
     // Validate & sanitize fields
-    body('description').notEmpty().trim().escape().isLength({ min: 2 }),
-    body('address').notEmpty().trim().escape(),
-    body('meeting-date').notEmpty(),
-    body('start-time').notEmpty().escape(),
-    body('end-time').notEmpty().escape(),
+    body('description', 'Please Include a Description!').trim().escape(),
+    body('address', 'Please provide and address!').trim().escape(),
+    body('meeting-date', 'Please provide an Event meeting date').trim().escape(),
+    body('start-time', 'Please include a start time').trim().escape(),
+    body('end-time', 'Please include when the event is over').trim().escape(),
     // Process after validation
     (req, res, next) => {
         const errors = validationResult(req);
@@ -62,7 +62,7 @@ exports.event_create_post = [
                     else {
                         event.save(function(err) {
                             if (err) { return next(err); }
-                            res.redirect('event_detail', { title: 'Event Detail', event: event });
+                            res.render('event_detail', { title: 'Event Detail', event: event });
                         });
                     }
                 });

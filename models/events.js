@@ -4,11 +4,13 @@ const moment = require('moment');
 
 const EventSchema = new Schema(
     {
-        description: { type: String, required: true, minlength: 1 },
-        address: { type: String, required: true, minlength: 1 },
+        description: { type: String, required: true },
+        address: { type: String, required: true },
         meeting_date: { type: Date, required: true },
         meeting_time_start: { type: Date, required: true },
         meeting_time_end: { type: Date, required: true }
+    }, {
+        timestamps: true
     }
 );
 
