@@ -48,29 +48,15 @@ exports.photo_gallery = (req, res, next) => {
 // Display detail page of specific Album
 exports.album_detail = async (req, res, next) => {
     try {
-        console.log(req.params.id);
         const findAlbum = await Album.findById(req.params.id);
         const photos = await Photo.find().populate({ path: 'album' });
         const albumPhotos = await photos.filter(function(photo) {
             return photo.album._id.toString() === req.params.id;
         });
-        console.log(albumPhotos);
         res.render('album_detail',{ title: 'Photo Album', album: findAlbum, photos: albumPhotos });
     } catch (err) {
         return next(err);
     }
-    // Album.findById(req.params.id)
-    //     .populate('photos')
-    //     .exec(function(err, album) {
-    //         if (err) { return next(err); }
-    //         if (album === null) {
-    //             const err = new Error('Album not found');
-    //             err.status = 404;
-    //             return next(err);
-    //         }
-    //         // Successful
-    //         res.render('album_detail', { title: 'Photo Album', album: album });
-    //     });
 };
 
 // Display Album Create Form - GET
@@ -127,16 +113,10 @@ exports.album_delete_get = (req, res, next) => {
 };
 
 // Handle Album Delete - POST
-exports.album_delete_post = (req, res) => {
-    res.send('NOT IMPLEMENTED: album delete POST');
-};
-
-// Display Album Update - GET
-exports.album_update_get = (req, res) => {
-    res.send('NOT IMPLEMENTED: album update GET');
-};
-
-// Handle Album Update - POST
-exports.album_update_post = (req, res) => {
-    res.send('NOT IMPLEMENTED: album update POST');
+exports.album_delete_post = (req, res, next) => {
+    Album.findByIdAndDelete(req.body.id, function deleteAlbum(err) {
+        if (err) { return next(err); }
+        // Successful
+        res.redirect('/photogallery');
+    });
 };

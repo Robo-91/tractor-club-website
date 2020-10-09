@@ -50,12 +50,6 @@ router.get('/album/:id/delete', album_controller.album_delete_get);
 // POST delete Album
 router.post('/album/:id/delete', album_controller.album_delete_post);
 
-// Get update Album
-router.get('/album/:id/update', album_controller.album_update_get);
-
-// POST update Album
-router.post('/album/:id/update', album_controller.album_update_post);
-
 // Get Album detail
 router.get('/album/:id', album_controller.album_detail);
 
