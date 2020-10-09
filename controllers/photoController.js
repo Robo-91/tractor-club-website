@@ -85,6 +85,7 @@ exports.photo_delete_get = (req, res, next) => {
 exports.photo_delete_post = (req, res, next) => {
     Photo.findByIdAndRemove(req.body.id, function deletePhoto(err) {
         if (err) { return next(err); }
+        // Successful
         res.redirect('/photogallery');
     })
 };
