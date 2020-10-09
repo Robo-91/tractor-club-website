@@ -93,7 +93,7 @@ exports.event_delete_post = (req, res, next) => {
 };
 
 // Display Event Update - GET
-exports.event_update_get = (req, res) => {
+exports.event_update_get = (req, res, next) => {
     Event.findById(req.params.id, function(err, event) {
         if (err) { return next(err); }
         if (event === null) {
