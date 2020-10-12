@@ -34,8 +34,8 @@ exports.event_create_post = [
     body('description', 'Please Include a Description!').trim().escape(),
     body('address', 'Please provide and address!').trim().escape(),
     body('meeting-date', 'Please provide an Event meeting date').trim().escape(),
-    body('start-time', 'Please include a start time').trim().escape(),
-    body('end-time', 'Please include when the event is over').trim().escape(),
+    body('start', 'Please include a start time').trim().escape(),
+    body('end', 'Please include when the event is over').trim().escape(),
     // Process after validation
     (req, res, next) => {
         const errors = validationResult(req);
@@ -44,8 +44,8 @@ exports.event_create_post = [
             description: req.body.description,
             address: req.body.address,
             meeting_date: req.body.meeting_date,
-            meeting_start_time: req.body.meeting_start_time,
-            meeting_end_time: req.body.meeting_end_time
+            start: req.body.start.toString(),
+            end: req.body.end.toString()
         });
         if(!errors.isEmpty()){
             // There are errors

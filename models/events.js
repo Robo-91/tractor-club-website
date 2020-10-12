@@ -7,8 +7,8 @@ const EventSchema = new Schema(
         description: { type: String, required: true },
         address: { type: String, required: true },
         meeting_date: { type: Date, required: true },
-        meeting_time_start: { type: Schema.Types.Mixed, required: true },
-        meeting_time_end: { type: Schema.Types.Mixed, required: true }
+        start: { type: String, required: true },
+        end: { type: String, required: true }
     }
 );
 
