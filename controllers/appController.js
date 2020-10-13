@@ -18,4 +18,7 @@ exports.contact = (req, res) => {
     res.render('contact', { title: 'Contact' });
 }
 
-
+// Admin Sign-up
+exports.adminSignUp = (req, res, next) => {
+    res.render('admin_signup', { title: 'Administrator Sign Up' });
+}
