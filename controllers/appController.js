@@ -1,3 +1,7 @@
+const User = require('../models/user');
+const bcrypt = require('bcryptjs');
+const passport = require('passport');
+
 // Index Page (Home)
 exports.index = (req, res) => {
     res.render('index', { title: 'Tractor Club Home Page' });
@@ -18,7 +22,54 @@ exports.contact = (req, res) => {
     res.render('contact', { title: 'Contact' });
 }
 
-// Admin Sign-up
-exports.adminSignUp = (req, res, next) => {
+// Admin Sign-up GET
+exports.adminSignUp = (req, res) => {
     res.render('admin_signup', { title: 'Administrator Sign Up' });
+}
+
+// Admin Sign-up POST
+exports.adminSignUp_post = (req, res, next) => {
+    const { username, password } = req.body;
+    let errors = [];
+
+    if (!username || !password) {
+        errors.push({ message: 'Please fill in all fields' });
+    }
+
+    if (errors.length > 0) {
+        res.render('admin_signup', {
+            title: 'Administrator Sign Up',
+            username: username,
+            password: password
+        })
+    } else {
+        User.findOne({ username: username })
+        .then(user => {
+            if (user) {
+                // User exists
+                errors.push({ message: 'Username is already registered' });
+                res.render('admin_signup', {
+                    errors,
+                    username,
+                    password
+                })
+            } else {
+                const newUser = new User({
+                    username: req.body.username,
+                    password: req.body.password
+                });
+                // Hash password
+                bcrypt.genSalt(10, (err, salt) => bcrypt.hash(newUser.password, salt, (err, hash) => {
+                    if (err) { console.log(err); }
+                    // Set password to hashed
+                    newUser.password = hash;
+                    newUser.save()
+                        .then(user => {
+                            res.redirect('/');
+                        })
+                        .catch(err => console.log(err));
+                }));
+            }
+        });
+    }
 }
