@@ -74,7 +74,12 @@ router.post('/photo/:id/delete', photo_controller.photo_delete_post);
 router.get('/photo/:id', photo_controller.photo_detail);
 
 // Admin Routes
+
+// GET Admin form
 router.get('/admin', app_controller.adminSignUp);
+
+// POST admin form
+router.post('/admin', app_controller.adminSignUp_post);
 
 // OTHER ROUTES //
 
