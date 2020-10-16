@@ -1,6 +1,7 @@
 const User = require('../models/user');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
+const router = require('../routes');
 
 // Index Page (Home)
 exports.index = (req, res) => {
@@ -20,6 +21,11 @@ exports.clubNews = (req, res) => {
 // Contact
 exports.contact = (req, res) => {
     res.render('contact', { title: 'Contact' });
+}
+
+// Admin Login
+exports.adminLogin = (req, res) => {
+    res.render('admin_login', { title: 'Administrator Login' });
 }
 
 // Admin Sign-up GET
@@ -72,4 +78,19 @@ exports.adminSignUp_post = (req, res, next) => {
             }
         });
     }
+}
+
+// Login POST Handler
+exports.adminLoginPost = (req, res, next) => {
+    passport.authenticate('local', {
+        successRedirect: '/dashboard',
+        failureRedirect: '/login',
+        failureFlash: true
+    })(req, res, next);
+}
+
+// Logout Handler
+exports.adminLogout = (req, res) => {
+    req.logOut();
+    res.redirect('/');
 }
