@@ -6,6 +6,7 @@ const app_controller = require('../controllers/appController');
 const event_controller = require('../controllers/eventController');
 const album_controller = require('../controllers/albumController');
 const photo_controller = require('../controllers/photoController');
+const app = require('../app');
 
 // GET Home Page
 router.get('/', app_controller.index);
@@ -75,11 +76,20 @@ router.get('/photo/:id', photo_controller.photo_detail);
 
 // Admin Routes
 
-// GET Admin form
+// GET Admin login
+router.get('/login', app_controller.adminLogin);
+
+// GET Admin form Sign Up
 router.get('/admin', app_controller.adminSignUp);
 
-// POST admin form
+// POST admin form Sign Up
 router.post('/admin', app_controller.adminSignUp_post);
+
+// POST admin form login
+router.post('/login', app_controller.adminLoginPost);
+
+// Admin Logout
+router.get('/logout', app_controller.adminLogout);
 
 // OTHER ROUTES //
 
