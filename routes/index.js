@@ -1,12 +1,14 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const { ensureAuthenticated } = require('../config/auth');
+
 
 // Controller Modules
 const app_controller = require('../controllers/appController');
 const event_controller = require('../controllers/eventController');
 const album_controller = require('../controllers/albumController');
 const photo_controller = require('../controllers/photoController');
-const app = require('../app');
+// const app = require('../app');
 
 // GET Home Page
 router.get('/', app_controller.index);
@@ -87,6 +89,11 @@ router.post('/admin', app_controller.adminSignUp_post);
 
 // POST admin form login
 router.post('/login', app_controller.adminLoginPost);
+
+// Dashboard
+router.get('/dashboard', ensureAuthenticated, (req, res) => {
+    res.render('dashboard', { title: 'Welcome Admin!' });
+})
 
 // Admin Logout
 router.get('/logout', app_controller.adminLogout);
