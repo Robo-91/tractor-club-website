@@ -5,7 +5,7 @@ const router = require('../routes');
 
 // Index Page (Home)
 exports.index = (req, res) => {
-    res.render('index', { title: 'Tractor Club Home Page' });
+    res.render('index', { title: 'East Texas Antique Tractor & Engine Club, Inc.' });
 }
 
 // About Page
