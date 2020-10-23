@@ -93,7 +93,7 @@ router.post('/login', app_controller.adminLoginPost);
 // Dashboard
 router.get('/dashboard', ensureAuthenticated, (req, res) => {
     res.render('dashboard', { title: 'Welcome Admin!' });
-})
+});
 
 // Admin Logout
 router.get('/logout', app_controller.adminLogout);
@@ -108,6 +108,9 @@ router.get('/clubnews', app_controller.clubNews);
 
 // Contact
 router.get('/contact', app_controller.contact);
+
+// Join Club Form
+router.get('/join', app_controller.joinClub);
 
 
 module.exports = router;

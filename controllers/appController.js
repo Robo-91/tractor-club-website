@@ -23,6 +23,11 @@ exports.contact = (req, res) => {
     res.render('contact', { title: 'Contact' });
 }
 
+// Join Club Form
+exports.joinClub = (req, res) => {
+    res.render('join_club', { title: 'Join Our Club' });
+}
+
 // Admin Login
 exports.adminLogin = (req, res) => {
     res.render('admin_login', { title: 'Administrator Login' });
