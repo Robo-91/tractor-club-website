@@ -4,8 +4,17 @@ const { NotExtended } = require('http-errors');
 // const { isDate } = require('moment');
 
 // Calender Page - Event List
-exports.calender = (req, res) => {
-    res.render('calender', { title: 'Calender Page' });
+exports.calender = async (req, res, next) => {
+    const currentMonth = new Date().getMonth();
+    try {
+        const events = await Event.find({});
+        const currentMonthEvents = events.filter((event) => {
+            return event.meeting_date.getMonth() === currentMonth;
+        });
+        res.status(200).render('calender', { title: 'Calender Page', currentMonthEvents });
+    } catch(e) {
+        res.status(500).send();
+    }
 };
 
 // Display detail page of specific event
