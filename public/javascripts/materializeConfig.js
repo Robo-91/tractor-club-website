@@ -1,10 +1,5 @@
-$(document).ready(function () {
-  $(".dropdown-button").dropdown({
-    constrainWidth: false,
-    hover: true,
-    belowOrigin: true,
-    alignment: "left",
-  });
-
-  $(".button-collapse").sidenav();
-});
+(function ($) {
+  $(function () {
+    $(".sidenav").sidenav();
+  }); // end of document ready
+})(jQuery); // end of jQuery name space
