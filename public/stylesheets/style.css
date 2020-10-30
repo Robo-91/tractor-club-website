@@ -13,3 +13,12 @@ h1 {
 p {
   text-align: center;
 }
+
+.dashboard-tasks {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-gap: 2em;
+  margin-top: 3em;
+  margin-right: 1.5em;
+  margin-left: 1.5em;
+}

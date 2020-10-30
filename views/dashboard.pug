@@ -2,7 +2,8 @@ extends layout
 
 block content
  h1 Dashboard
- a(href="/calender/create") Add Event
- a(href="/album/create") Add Album
- a(href="/photo/create") Add Photo
- a(href="/logout") Logout
+ div.dashboard-tasks
+   a(class='waves-effect waves-light btn-large' href='/calender/create') Add Event
+   a(class='waves-effect waves-light btn-large' href='/album/create') Add Album
+   a(class='waves-effect waves-light btn-large' href='/photo/create') Add Photo
+   a(class='waves-effect waves-light btn-large' href='/logout') Logout
