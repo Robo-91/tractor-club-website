@@ -8,16 +8,34 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
 
   body
-    nav(class="light-blue lighten-1" role="navigation")
+    nav(class="red lighten-1" role="navigation")
       div(class="nav-wrapper container")
         a(id="logo-container" href="/" class="brand-logo") Home
         ul(class="right hide-on-med-and-down")
           li
-            a(href='/calender') Calender
-        
-        ul(id="nav-mobile" class="sidenav")
+            a(href="/about") About
           li
-            a(href="/calender") Calender
+            a(href='/calender') Calender
+          li
+            a(href='/clubnews') Club News
+          li
+            a(href='/contact') Contact
+          li
+            a(href='/photogallery') Photogallery
+        
+        ul(id="nav-mobile" class="sidenav red lighten-1")
+          li
+            a(href="/about" class="white-text") About
+          li
+            a(href='/calender' class="white-text") Calender
+          li
+            a(href='/clubnews' class="white-text") Club News
+          li
+            a(href='/contact' class="white-text") Contact
+          li
+            a(href='/photogallery' class="white-text") Photogallery
+          li
+            a(href='/join' class="white-text") Join Our Club
         a(href="#" data-target="nav-mobile" class="sidenav-trigger")
           i(class="material-icons") menu
 
