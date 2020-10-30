@@ -2,9 +2,26 @@ doctype html
 html
   head
     title= title
-    meta(name='viewport' content='width=device-width, initial-scale=1')
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    //- meta(name='viewport' content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='https://fonts.googleapis.com/icon?family=Material+Icons')
     link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+
   body
+    nav(class="blue darken-4")
+      div(class="container")
+        div(class="nav-wrapper")
+          a(href="/" class="brand-logo") Home
+          a(href="#" class="button-collapse" data-activates="mobile-nav")
+            i(class="material-icons") menu
+          ul(class="right hide-on-med-and-down")
+            li
+              a Home
+            li
+              a About
+          
+    script(type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js")
+    script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js")
+    script(type="text/javascript" src="/javascripts/materializeConfig.js")
     block content
-    script(type="text/javascript" src="js/materialize.min.js")
+      
