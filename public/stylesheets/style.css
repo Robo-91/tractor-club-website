@@ -1,24 +1,41 @@
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00b7ff;
+	color: #00b7ff;
 }
 
 h1 {
-  text-align: center;
+	text-align: center;
 }
 
 p {
-  text-align: center;
+	text-align: center;
 }
 
 .dashboard-tasks {
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  grid-gap: 2em;
-  margin-top: 3em;
-  margin-right: 1.5em;
-  margin-left: 1.5em;
+	display: grid;
+	grid-template-columns: repeat(2, auto);
+	grid-gap: 2em;
+	margin-top: 3em;
+	margin-right: 1.5em;
+	margin-left: 1.5em;
+}
+
+#month {
+	text-align: center;
+}
+
+table {
+	width: 90%;
+	margin-left: 4em;
+}
+
+.days {
+	height: 5em;
+}
+
+td {
+	text-align: center;
 }
