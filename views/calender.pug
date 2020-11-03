@@ -3,18 +3,18 @@ extends layout
 block content
   h1= title
   
-  h2(id="month") #{currentDate.getMonth()} - #{currentDate.getYear()}
+  h2(id="month")
 
   table
     tbody
       tr(id="week")
-        td Sun
-        td Mon
-        td Tue
-        td Wed
-        td Thu
-        td Fri
-        td Sat
+        td(class="weekday")
+        td(class="weekday")
+        td(class="weekday")
+        td(class="weekday")
+        td(class="weekday")
+        td(class="weekday")
+        td(class="weekday")
       tr(class="days")
         td 1
         td 2
