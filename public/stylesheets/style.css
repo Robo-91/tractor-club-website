@@ -26,19 +26,25 @@ p {
 #month {
 	text-align: center;
 	margin-bottom: 1em;
-	margin-top: 1em;
+	margin-top: 0.5em;
+}
+
+#year {
+	text-align: center;
+	margin-bottom: 1em;
 }
 
 table {
 	width: 90%;
 	margin-left: 4em;
-	border-collapse: separate;
 }
 
-.days {
-	height: 5em;
-}
-
-.weekday {
+thead td {
 	color: white;
+	text-align: center;
+}
+
+.button-container {
+	text-align: center;
+	margin-top: 9em;
 }

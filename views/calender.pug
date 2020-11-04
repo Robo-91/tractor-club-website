@@ -2,57 +2,20 @@ extends layout
 
 block content
   h1(id="month")
+  h2(id="year")
 
   table(class="responsive-table centered")
-    tbody
+    thead
       tr(class="red lighten-1")
-        td(class="weekday")
-        td(class="weekday")
-        td(class="weekday")
-        td(class="weekday")
-        td(class="weekday")
-        td(class="weekday")
-        td(class="weekday")
-      tr(class="days")
-        td 1
-        td 2
-        td 3
-        td 4
-        td 5
-        td 6
-        td 7
-      tr(class="days")
-        td 8
-        td 9
-        td 10
-        td 11
-        td 12
-        td 13
-        td 14
-      tr(class="days")
-        td 15
-        td 16
-        td 17
-        td 18
-        td 19
-        td 20
-        td 21
-      tr(class="days")
-        td 22
-        td 23
-        td 24
-        td 25
-        td 26
-        td 27
-        td 28
-      tr(class="days")
-        td 29
-        td 30
-        td -
-        td -
-        td -
-        td -
-        td -
+        td Sun
+        td Mon
+        td Tue
+        td Wed
+        td Thu
+        td Fri
+        td Sat
+    tbody(id="calender-content")
+        
     
 
   script
