@@ -2,11 +2,14 @@ extends layout
 
 block content
   h1= title
-
-  form(method="POST" action='')
-    .form-group
-      label(for='username')
-      input(type='text' name='username' id='username' required='true' placeholder='Username')
-      label(for='password')
-      input(type='password' name='password' id='password' required='true' placeholder='Password')
-    input(class='submit' type='submit')
+  
+  .row
+    form(method="POST" action='' class="col s12")
+      div(class="input-field col s6")
+        label(for='username')
+        input(type='text' name='username' id='username' required='true' placeholder='Username')
+      div(class="input-field col s6")
+        label(for='password')
+        input(type='password' name='password' id='password' required='true' placeholder='Password')
+      div(class="button-container")
+        input(class="btn waves-effect waves-light btn-large" type='submit')
