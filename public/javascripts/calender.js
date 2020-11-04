@@ -1,11 +1,11 @@
 const date = new Date();
 const month = date.getMonth();
 const day = date.getDay();
+const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const calenderMonth = document.getElementById("month");
-const calenderDay = Array.from(document.getElementsByClassName("weekday"));
+const weekDay = Array.from(document.getElementsByClassName("weekday"));
 
-console.log(calenderDay);
-
+// Output current month
 switch (month) {
 	case 0:
 		calenderMonth.textContent = "January";
@@ -45,4 +45,7 @@ switch (month) {
 		break;
 }
 
-for (let i = 0; i < calenderDay.length; i++) {}
+// Dynamic create weekdays
+for (let i = 0; i < weekDay.length; i++) {
+	weekDay[i].textContent = dayNames[i];
+}

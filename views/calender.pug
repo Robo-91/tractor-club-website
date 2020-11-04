@@ -1,13 +1,11 @@
 extends layout
 
 block content
-  h1= title
-  
-  h2(id="month")
+  h1(id="month")
 
-  table
+  table(class="responsive-table centered")
     tbody
-      tr(id="week")
+      tr(class="red lighten-1")
         td(class="weekday")
         td(class="weekday")
         td(class="weekday")

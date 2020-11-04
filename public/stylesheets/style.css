@@ -25,17 +25,20 @@ p {
 
 #month {
 	text-align: center;
+	margin-bottom: 1em;
+	margin-top: 1em;
 }
 
 table {
 	width: 90%;
 	margin-left: 4em;
+	border-collapse: separate;
 }
 
 .days {
 	height: 5em;
 }
 
-td {
-	text-align: center;
+.weekday {
+	color: white;
 }
