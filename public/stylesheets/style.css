@@ -48,3 +48,16 @@ thead td {
 	text-align: center;
 	margin-top: 9em;
 }
+
+img {
+	display: inline-block;
+}
+
+section {
+	margin-top: 5em;
+}
+
+h2 {
+	margin: 2em 2em;
+	text-align: center;
+}
