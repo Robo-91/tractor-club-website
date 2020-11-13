@@ -1,24 +1,29 @@
 const date = new Date();
 const year = date.getFullYear();
-const month = date.getMonth();
-const day = date.getDay();
+const currentMonth = date.getMonth();
+const weekDay = date.getDay();
 const monthNames = [
-	"Jan",
-	"Feb",
-	"Mar",
-	"Apr",
+	"January",
+	"Febuary",
+	"March",
+	"April",
 	"May",
 	"June",
 	"July",
-	"Aug",
-	"Sept",
-	"Oct",
-	"Nov",
-	"Dec",
+	"August",
+	"September",
+	"October",
+	"November",
+	"December",
 ];
-const calenderMonth = document.getElementById("month");
-const calenderYear = document.getElementById("year");
+document.getElementById("month").textContent = monthNames[currentMonth];
+document.getElementById("year").textContent = year;
 const calenderContent = document.getElementById("calender-content");
+const daysOfWeek = document.getElementById("days");
+
+for (let i = 1; i <= 31; i++) {
+	daysOfWeek.innerHTML += `<div class=${i}>${i}</div>`;
+}
 
 // Dynamically create days of the calender.
 // Write a function to takes it the year and month. You should be able

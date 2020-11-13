@@ -1,21 +1,23 @@
 extends layout
 
 block content
-  h1(id="month")
-  h2(id="year")
-
-  table(class="responsive-table centered")
-    thead
-      tr(class="red lighten-1")
-        td Sun
-        td Mon
-        td Tue
-        td Wed
-        td Thu
-        td Fri
-        td Sat
-    tbody(id="calender-content")
-        
+  .calender-container
+    div(class="calendar-header")
+      i(class="fas fa-arrow-left last")
+      h1(id="month")
+      h2(id="year")
+      i(class="fas fa-arrow-right next")
+    div(class="container")
+      div(class="weekdays red lighten-1 white-text")
+        p Sun
+        p Mon
+        p Tue
+        p Wed
+        p Thu
+        p Fri
+        p Sat
+      div(id="days")
+            
     
 
   script

@@ -61,3 +61,16 @@ h2 {
 	margin: 2em 2em;
 	text-align: center;
 }
+
+.weekdays {
+	display: flex;
+	justify-content: space-around;
+}
+
+#days {
+	display: grid;
+	grid-template-columns: repeat(7, auto);
+	grid-template-rows: repeat(6, 5em);
+	justify-items: center;
+	align-items: center;
+}
