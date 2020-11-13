@@ -2,10 +2,11 @@ extends layout
 
 block content
   .calender-container
-    div(class="calendar-header")
+    div(class="container calendar-header red lighten-1 white-text")
       i(class="fas fa-arrow-left last")
-      h1(id="month")
-      h2(id="year")
+      .month-year
+        h1(id="month")
+        h2(id="year")
       i(class="fas fa-arrow-right next")
     div(class="container")
       div(class="weekdays red lighten-1 white-text")

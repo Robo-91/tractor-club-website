@@ -2,6 +2,14 @@ const date = new Date();
 const year = date.getFullYear();
 const currentMonth = date.getMonth();
 const weekDay = date.getDay();
+const lastDayCurMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+const lastDayPrevMonth = new Date(date.getFullYear(), date.getMonth(), 0);
+const firstDayNextMonth = new Date(date.getFullYear(), date.getMonth() + 1, 1);
+console.log(
+	lastDayCurMonth.getDate(),
+	lastDayPrevMonth,
+	firstDayNextMonth.getDate()
+);
 const monthNames = [
 	"January",
 	"Febuary",
@@ -21,13 +29,12 @@ document.getElementById("year").textContent = year;
 const calenderContent = document.getElementById("calender-content");
 const daysOfWeek = document.getElementById("days");
 
-for (let i = 1; i <= 31; i++) {
+// Render Days of Current Month
+for (let i = 1; i <= lastDayCurMonth.getDate(); i++) {
 	daysOfWeek.innerHTML += `<div class=${i}>${i}</div>`;
 }
 
-// Dynamically create days of the calender.
-// Write a function to takes it the year and month. You should be able
-// increment/decrement the current month and populate the calender days.
-// In the pug page, load in the events and have them inserted into the
-// days that they match to. (create element with id associated with day and match up
-// the same days)
+// Render Days of Next Month
+// for (let j = 1; j < firstDayNextMonth.getDate(); j++) {
+// 	console.log(firstDayNextMonth);
+// }
