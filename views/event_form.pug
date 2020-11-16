@@ -1,9 +1,12 @@
 extends layout
 
 block content
-  h1= title
+  a(href="/dashboard" class="waves-effect waves-light btn") Dashboard
+    i(class="material-icons right") dashboard
 
-  form(method='POST' action='')
+  h1= title
+  
+  form(method='POST' action='' class="container")
     div.form-group
       label(for="description") Event Description
       input(type="text" name='description' id='description' placeholder='description' required='true')
@@ -15,11 +18,11 @@ block content
       input(type="time" name='start' id='meeting_start_time' placeholder='start time' required='true')
       label(for="meeting_end_time") Ending Time
       input(type="time" name='end' id='meeting_end_time' placeholder='end time' required='true')
-    input(class='submit' type='submit')
+    button(class='btn waves-effect waves-light submit' type='submit') Submit
+      i(class="material-icons right") send
 
     if errors
       ul
         for error in errors
           li!= error.msg
 
-  a(href="/dashboard") Dashboard
